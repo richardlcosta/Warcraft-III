@@ -1,8 +1,7 @@
 package warcraft.objetos.unidades;
 
 import warcraft.objetos.Objeto;
-import warcraft.util.Custo;
-import warcraft.util.Posicao;
+import warcraft.util.*;
 
 
 public class Unidade extends Objeto {
@@ -15,16 +14,16 @@ public class Unidade extends Objeto {
         if(verificarVida()) {
             switch (direcao) {
                 case "Norte":
-                    setPosicao(new Posicao((getPosicao().getPosicaoX()) + " " + (getPosicao().getPosicaoY() + velocidade)));
+                    posicao.moverNorte(velocidade);
                     break;
                 case "Sul":
-                    setPosicao(new Posicao((getPosicao().getPosicaoX()) + " " + (getPosicao().getPosicaoY() - velocidade)));
+                    posicao.moverSul(velocidade);
                     break;
                 case "Leste":
-                    setPosicao(new Posicao((getPosicao().getPosicaoX() + velocidade) + " " + (getPosicao().getPosicaoY())));
+                    posicao.moverLeste(velocidade);
                     break;
                 case "Oeste":
-                    setPosicao(new Posicao((getPosicao().getPosicaoX() - velocidade) + " " + (getPosicao().getPosicaoY())));
+                    posicao.moverOeste(velocidade);
                     break;
             }
         }else{

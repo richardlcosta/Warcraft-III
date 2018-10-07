@@ -4,7 +4,7 @@ import warcraft.util.Custo;
 import warcraft.util.Posicao;
 
 public abstract class Objeto {
-    private Posicao posicao;
+    protected Posicao posicao;
     private Custo custo;
     private String imagem;
     private int estado;
@@ -12,9 +12,6 @@ public abstract class Objeto {
 
     public Posicao getPosicao() {
         return posicao;
-    }
-    public void setPosicao(Posicao posicao) {
-        this.posicao = posicao;
     }
     public int getEstado() {
         return estado;
