@@ -7,16 +7,16 @@ public abstract class Objeto {
     protected Posicao posicao;
     private Custo custo;
     private String imagem;
-    private int estado;
+    private boolean estado;
     private int vida;
 
     public Posicao getPosicao() {
         return posicao;
     }
-    public int getEstado() {
+    public boolean getEstado() {
         return estado;
     }
-    public void setEstado(int estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
     public int getVida() {
@@ -26,7 +26,7 @@ public abstract class Objeto {
         this.vida = vida;
     }
 
-    public Objeto(Posicao posicao, String imagem, Custo custo, int estado, int vida) {
+    public Objeto(Posicao posicao, String imagem, Custo custo, boolean estado, int vida) {
         this.posicao = posicao;
         this.imagem = imagem;
         this.custo = custo;

@@ -35,7 +35,7 @@ public class Unidade extends Objeto {
         return getVida() > 0;
     }
 
-    public Unidade(Posicao posicao, String imagem, Custo custo, int estado, int vida, int ataque, double velocidade, int alcance, int armadura) {
+    public Unidade(Posicao posicao, String imagem, Custo custo, boolean estado, int vida, int ataque, double velocidade, int alcance, int armadura) {
         super(posicao, imagem, custo, estado, vida);
         this.ataque = ataque;
         this.alcance = alcance;

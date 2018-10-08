@@ -10,6 +10,6 @@ public class CentroDaCidade extends Construcao {
     }
 
     public CentroDaCidade(String posicao) {
-        super(new Posicao(posicao), "centro.jpg", new Custo("0 0 200 0"), 1, 600, 10, 8);
+        super(new Posicao(posicao), "centro.jpg", new Custo(0,0,200,0), true, 600, 10, 8);
     }
 }

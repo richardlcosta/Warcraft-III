@@ -22,6 +22,6 @@ public class Campones extends Unidade{
     }
 
     public Campones(String posicao) {
-        super(new Posicao(posicao), "campones.jpg", new Custo("50 0 0 0"), 1, 50,3,2.0,0,0);
+        super(new Posicao(posicao), "campones.jpg", new Custo(50,0,0,0), true, 50,3,2.0,0,0);
     }
 }

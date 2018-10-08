@@ -12,6 +12,6 @@ public class Templo extends Construcao{
     }
 
     public Templo(String posicao) {
-        super(new Posicao(posicao), "templo.jpg", new Custo("0 0 250 0"), 1, 350,0,0);
+        super(new Posicao(posicao), "templo.jpg", new Custo(0,0,250,0), true, 350,0,0);
     }
 }
