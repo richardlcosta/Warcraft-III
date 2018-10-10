@@ -11,7 +11,7 @@ public class Unidade extends Objeto {
     private int armadura = 0;
 
     public void mover(String direcao){
-        if(verificarVida()) {
+        if(getEstado()) {
             switch (direcao) {
                 case "Norte":
                     posicao.moverNorte(velocidade);
@@ -29,10 +29,6 @@ public class Unidade extends Objeto {
         }else{
             System.out.println("Uma unidade morta não pode se mover");
         }
-    }
-
-    private boolean verificarVida(){
-        return getVida() > 0;
     }
 
     public Unidade(Posicao posicao, String imagem, Custo custo, boolean estado, int vida, int ataque, double velocidade, int alcance, int armadura) {

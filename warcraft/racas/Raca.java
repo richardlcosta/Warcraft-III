@@ -10,10 +10,38 @@ public abstract class Raca {
     private int ouro;
     private int madeira;
     private int mana;
+    private boolean extinta = false;
     private int capacidadeMax;
 
-    List<Construcao> construcoes = new ArrayList<>();
-    List<Unidade> unidades = new ArrayList<>();
+    //Arrays de Construção
+    private ArrayList<Casa> casas = new ArrayList<>();
+    private ArrayList<CentroDaCidade> centros = new ArrayList<>();
+    private ArrayList<Quartel> quarteis = new ArrayList<>();
+    private ArrayList<Templo> templos = new ArrayList<>();
+    private ArrayList<Torre> torres = new ArrayList<>();
+
+    //Arrays de Unidades
+    private ArrayList<AndarilhoEspiritual> andarilhos = new ArrayList<>();
+    private ArrayList<Arqueiro> arqueiros = new ArrayList<>();
+    private ArrayList<Campones> camponeses = new ArrayList<>();
+    private ArrayList<Cavaleiro> cavaleiros = new ArrayList<>();
+    private ArrayList<Grifo> grifos = new ArrayList<>();
+    private ArrayList<Guerreiro> guerreiros = new ArrayList<>();
+    private ArrayList<Sacerdote> sacerdotes = new ArrayList<>();
+
+    public CentroDaCidade getCentro(int numero) {
+        return centros.get(numero - 1);
+    }
+    public void addCentro(CentroDaCidade centro) {
+        this.centros.add(centro);
+    }
+
+    public Campones getCampones(int numero) {
+        return camponeses.get(numero - 1);
+    }
+    public void addCampones(Campones campones) {
+        this.camponeses.add(campones);
+    }
 
     public void setComida(int comida) {
         this.comida = comida;
@@ -26,20 +54,6 @@ public abstract class Raca {
     }
     public void setMana(int mana) {
         this.mana = mana;
-    }
-
-    public List<Construcao> getConstrucoes() {
-        return construcoes;
-    }
-    public List<Unidade> getUnidades() {
-        return unidades;
-    }
-
-    public void adicionarUnidade(Unidade unidade){
-        unidades.add(unidade);
-    }
-    public void adicionarConstrucao(Construcao construcao){
-        construcoes.add(construcao);
     }
 
     public Raca(int comida, int ouro, int madeira, int mana) {
