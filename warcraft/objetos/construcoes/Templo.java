@@ -5,23 +5,41 @@ import warcraft.racas.Humano;
 import warcraft.racas.Raca;
 import warcraft.util.*;
 
-import java.util.ArrayList;
-
 public class Templo extends Construcao {
 
     public void criarSacerdote(String posicao) {
-        raca.addUnidade(new Sacerdote(posicao, raca));
+        Sacerdote sacerdote = new Sacerdote(posicao, raca);
+        if (raca.getRecursos().compararRecursos(sacerdote.getRecurso())) {
+            if (raca.calculaPopulacaoMaxima()) {
+                raca.addUnidade(new Sacerdote(posicao, raca));
+            } else {
+                Erro.imprimeMensagemErro("POPULACAO_FULL");
+            }
+            raca.getRecursos().consumirRecursos(sacerdote.getRecurso());
+        } else {
+            Erro.imprimeMensagemErro("RECURSOS_404");
+        }
     }
 
     public void criarAndarilho(String posicao) {
-        if (raca instanceof Humano) {
-            System.out.println("Apenas orcs podem criar andarilhos espirituais");
+        AndarilhoEspiritual andarilhoEspiritual = new AndarilhoEspiritual(posicao, raca);
+        if (raca.getRecursos().compararRecursos(andarilhoEspiritual.getRecurso())) {
+            if (raca.calculaPopulacaoMaxima()) {
+                if (raca instanceof Humano) {
+                    Erro.imprimeMensagemErro("ORCS_ONLY");
+                } else {
+                    raca.addUnidade(new AndarilhoEspiritual(posicao, raca));
+                }
+            } else {
+                Erro.imprimeMensagemErro("POPULACAO_FULL");
+            }
+            raca.getRecursos().consumirRecursos(andarilhoEspiritual.getRecurso());
         } else {
-            raca.addUnidade(new Sacerdote(posicao, raca));
+            Erro.imprimeMensagemErro("RECURSOS_404");
         }
     }
 
     public Templo(String posicao, Raca raca) {
-        super(new Posicao(posicao), "templo.jpg", new Custo(0, 0, 250, 0), true, 350, 0, 0, raca);
+        super(new Posicao(posicao), "templo.jpg", new Recurso(0, 0, 250, 0), true, 350, 0, 0, raca);
     }
 }
