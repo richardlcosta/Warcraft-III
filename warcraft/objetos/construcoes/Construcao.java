@@ -1,13 +1,16 @@
 package warcraft.objetos.construcoes;
 
-import warcraft.objetos.Objeto;
-import warcraft.racas.Raca;
+import warcraft.objetos.*;
+import warcraft.racas.*;
 import warcraft.util.*;
 
-public class Construcao extends Objeto {
-    private int alcance = 0;
+/**
+ * Molde para as construções do jogo
+ */
 
-    public Construcao(Posicao posicao, String imagem, Recurso recurso, boolean estado, int vidaMax, int ataque, int alcance, Raca raca) {
-        super(posicao, imagem, recurso, estado, vidaMax, ataque, raca);
+public class Construcao extends Objeto {
+
+    public Construcao(Posicao posicao, String imagem, Custo custo, boolean estado, int vidaMax, int ataque, int alcance, Raca raca) {
+        super(posicao, imagem, custo, estado, vidaMax, ataque, alcance, raca);
     }
 }

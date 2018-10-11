@@ -2,9 +2,13 @@ package warcraft.racas;
 
 import warcraft.util.Recurso;
 
+/**
+ * Molde para os humanos do jogo
+ */
+
 public class Humano extends Raca {
 
-    public Humano() {
-        super(new Recurso(800, 800, 800, 5));
+    public Humano(int comida, int ouro, int madeira, int mana) {
+        super(new Recurso(comida, ouro, madeira, mana));
     }
 }

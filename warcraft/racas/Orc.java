@@ -2,9 +2,13 @@ package warcraft.racas;
 
 import warcraft.util.Recurso;
 
+/**
+ * Molde para os orcs do jogo
+ */
+
 public class Orc extends Raca {
 
-    public Orc() {
-        super(new Recurso(300, 300, 300, 5));
+    public Orc(int comida, int ouro,int madeira, int mana) {
+        super(new Recurso(comida, ouro, madeira, mana));
     }
 }

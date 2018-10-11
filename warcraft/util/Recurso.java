@@ -1,47 +1,64 @@
 package warcraft.util;
 
-public class Recurso {
+/**
+ * Armazena todos os recurso de uma raça
+ */
 
-    private int comida;
-    private int ouro;
-    private int madeira;
-    private int mana;
+public class Recurso extends Custo {
 
-    public int getComida() {
-        return comida;
-    }
-    public int getOuro() {
-        return ouro;
-    }
-    public int getMadeira() {
-        return madeira;
-    }
-    public int getMana() {
-        return mana;
-    }
+    /**
+     * Adiciona recursos
+     * @param comida {int}
+     * @param ouro {int}
+     * @param madeira {int}
+     * @param mana {int}
+     */
 
-    public void addRecursos(int comida, int ouro, int madeira, int mana){
+    public void addRecursos(int comida, int ouro, int madeira, int mana) {
         this.comida += comida;
         this.ouro += ouro;
         this.madeira += madeira;
         this.mana += mana;
     }
 
-    public void consumirRecursos(Recurso recurso){
-        this.comida -= recurso.comida;
-        this.ouro -= recurso.ouro;
-        this.madeira -= recurso.madeira;
-        this.mana -= recurso.mana;
+    /**
+     * Consome recursos
+     * @param custo {Custo}
+     */
+
+    public void consumirRecursos(Custo custo) {
+        this.comida -= custo.comida;
+        this.ouro -= custo.ouro;
+        this.madeira -= custo.madeira;
+        this.mana -= custo.mana;
     }
 
-    public boolean compararRecursos(Recurso recurso){
-        return this.comida >= recurso.getComida() && this.ouro >= recurso.getOuro() && this.madeira >= recurso.getMadeira() && this.mana >= recurso.getMana();
+    /**
+     * Consome recursos
+     * @param comida {int}
+     * @param ouro {int}
+     * @param madeira {int}
+     * @param mana {int}
+     */
+
+    public void consumirRecursos(int comida, int ouro, int madeira, int mana) {
+        this.comida -= comida;
+        this.ouro -= ouro;
+        this.madeira -= madeira;
+        this.mana -= mana;
+    }
+
+    /**
+     * Compara o custo de um objeto com os seus recursos de raça e verifica se é possível a criação
+     * @param custo {Custo}
+     * @return boolean
+     */
+
+    public boolean compararRecursos(Custo custo) {
+        return this.comida >= custo.getComida() && this.ouro >= custo.getOuro() && this.madeira >= custo.getMadeira() && this.mana >= custo.getMana();
     }
 
     public Recurso(int comida, int ouro, int madeira, int mana) {
-        this.comida = comida;
-        this.ouro = ouro;
-        this.madeira = madeira;
-        this.mana = mana;
+        super(comida, ouro, madeira, mana);
     }
 }

@@ -4,27 +4,38 @@ import warcraft.objetos.construcoes.*;
 import warcraft.objetos.unidades.*;
 import warcraft.racas.*;
 
+/**
+ *
+ * @author Richard
+ * @version 2.0
+ */
+
 public class Main {
+
+    /**
+     * Método Principal
+     * @param args {String[]}
+     */
 
     public static void main(String[] args) {
         //AO INSTANCIAR UMA RAÇA, O JOGADOR INICIARÁ POR PADRÃO COM UM CENTRO DE CIDADE E DOIS CAMPONESES
         //PARA FINS DE TESTES O JOGADOR TAMBÉM INICIA COM 300 DE CADA MANTIMENTO E 5 DE MANA
 
         //INICIALIZANDO A HUMANIDADE
-        Humano humanos = new Humano();
+        Humano humanos = new Humano(800,800,800,5);
 
         //VISUALIZANDO OS MANTIMENTOS INICIAIS
         humanos.verRecursos();
 
         //ACESSANDO O CENTRO "DE FÁBRICA" PARA CRIAR UM TERCEIRO CAMPONES
-        ((CentroDaCidade) humanos.getConstrucoes(0)).criarCampones("10 10");
+        ((CentroDaCidade) humanos.getConstrucoes(0)).criarCampones("0 0");
 
         //ACESSANDO O CAMPONES "DE FÁBRICA" NÚMERO 1, PARA CRIAR UMA CASA
-        ((Campones) humanos.getUnidades(0)).construirCasa("15 15");
+        ((Campones) humanos.getUnidades(0)).construirCasa("0 0");
 
         //ACESSANDO O CAMPONES NÚMERO 2, PARA CRIAR UM TEMPLO E UM QUARTEL
-        ((Campones) humanos.getUnidades(1)).construirTemplo("20 20");
-        ((Campones) humanos.getUnidades(1)).construirQuartel("25 25");
+        ((Campones) humanos.getUnidades(1)).construirTemplo("0 0");
+        ((Campones) humanos.getUnidades(1)).construirQuartel("0 0");
 
         //CRIANDO UM GUERREIRO
         ((Quartel) humanos.getConstrucoes(3)).criarGuerreiro("0 0");
@@ -38,7 +49,7 @@ public class Main {
         humanos.verRecursos();
 
         //ACESSANDO O TEMPLO PARA TENTAR CRIAR UM ANDARILHO E CONFERINDO MENSAGEM DE ERRO
-        ((Templo) humanos.getConstrucoes(2)).criarAndarilho("5 5");
+        ((Templo) humanos.getConstrucoes(2)).criarAndarilho("0 0");
 
         //TESTANDO LIMITE DE POPULAÇÃO
         ((CentroDaCidade) humanos.getConstrucoes(0)).criarCampones("0 0");
@@ -52,7 +63,7 @@ public class Main {
         ((CentroDaCidade) humanos.getConstrucoes(0)).criarCampones("0 0");
 
         //INICIALIZANDO ORCS
-        Orc orcs = new Orc();
+        Orc orcs = new Orc(500,500,500,15);
         ((Campones) orcs.getUnidades(0)).construirQuartel("0 0");
 
         //TESTANDO ATAQUES CONSECUTIVOS ATÉ A MORTE
@@ -72,10 +83,10 @@ public class Main {
         humanos.getConstrucoes(1).atacar(orcs.getUnidades(0));
 
         //CRIANDO MAIS UM CENTRO PARA AUMENTAR A CAPACIDADE MÁXIMA DE POPULAÇÃO HUMANA
-        ((Campones) humanos.getUnidades(0)).construirCentro("2 2");
+        ((Campones) humanos.getUnidades(0)).construirCentro("0 0");
 
         //CRIANDO UM SACERDOTE
-        ((Templo) humanos.getConstrucoes(2)).criarSacerdote("30 30");
+        ((Templo) humanos.getConstrucoes(2)).criarSacerdote("0 0");
 
         //RECEBENDO UM ATAQUE DE UM ORC E SENDO CURADO POR UM SACERDOTE
         orcs.getUnidades(1).atacar(humanos.getUnidades(1));
@@ -103,7 +114,82 @@ public class Main {
         ((Sacerdote) humanos.getUnidades(12)).curar(humanos.getUnidades(1)); //SEM MANA SUFICIENTE
 
         //TENTANDO CRIAR CONSTRUÇÕES SEM RECURSOS
-        ((Campones) humanos.getUnidades(0)).construirCentro("50 50");
+        ((Campones) humanos.getUnidades(0)).construirCentro("0 0");
 
+        //TENTANDO REALIZAR AÇÕES COM UNIDADES MORTAS
+        ((Campones) orcs.getUnidades(0)).construirTorre("0 0");
+
+        //TENTANDO REALIZAR AÇÕES COM CONSTRUÇÕES DESTRUÍDAS
+        ((Quartel) orcs.getConstrucoes(1)).criarCavaleiro("0 0");
+        for (int i = 0; i < 50; i++) {
+            orcs.getUnidades(2).atacar(humanos.getConstrucoes(0));
+        }
+        ((CentroDaCidade) humanos.getConstrucoes(0)).criarCampones("0 0");
+
+        //MOVENDO UM HUMANO
+        for (int i = 0; i < 2; i++) {
+            humanos.getUnidades(0).mover("Sul");
+            humanos.getUnidades(0).mover("Leste");
+        }
+
+        //TENTANDO ATACAR UM INIMIGO DISTANTE
+        humanos.getUnidades(0).atacar(orcs.getUnidades(1));
+
+        //CRIANDO UM ARQUEIRO E ATACANDO O ALVO DISTANTE
+        ((Quartel) orcs.getConstrucoes(1)).criarArqueiro("0 0");
+        for (int i = 0; i < 10; i++) {
+            orcs.getUnidades(3).atacar(humanos.getUnidades(0));
+        }
+
+        //CRIANDO UM TEMPLO ORCS, UM ANDARILHO E TESTANDO SEUS MÉTODOS
+        ((Campones) orcs.getUnidades(1)).construirTemplo("0 0");
+        ((Templo) orcs.getConstrucoes(2)).criarAndarilho("0 0");
+
+        //REVIVENDO UMA UNIDADE ALIADA
+        ((AndarilhoEspiritual) orcs.getUnidades(4)).revive(orcs.getUnidades(0));
+
+        //VERIFICANDO A QUANTIDADE DE UNIDADES HUMANAS e ORCS VIVAS OU MORTAS ANTES DE REVIVER UM CAMPONES HUMANO
+        System.out.println("Total de unidades humanas: " + humanos.totalUnidades());
+        System.out.println("Total de unidades orcs: " + orcs.totalUnidades());
+
+        //REVIVENDO UMA UNIDADE INIMIGA
+        ((AndarilhoEspiritual) orcs.getUnidades(4)).revive(humanos.getUnidades(0));
+
+        //TESTANDO SE A UNIDADE FOI REALMENTE DOMINADA
+        System.out.println("Total de unidades humanas: " + humanos.totalUnidades());
+        System.out.println("Total de unidades orcs: " + orcs.totalUnidades());
+
+        //TESTANDO EXTINÇÃO DE UMA RAÇA, USAREI VÁRIOS FOR PARA FACILITAR A ELIMINAÇÃO
+        for (int i = 0; i < 4; i++) {
+            humanos.getUnidades(2).atacar(orcs.getUnidades(0));
+        }
+        for (int i = 0; i < 4; i++) {
+            humanos.getUnidades(2).atacar(orcs.getUnidades(1));
+        }
+        for (int i = 0; i < 18; i++) {
+            humanos.getUnidades(2).atacar(orcs.getUnidades(2));
+        }
+        for (int i = 0; i < 4; i++) {
+            humanos.getUnidades(2).atacar(orcs.getUnidades(3));
+        }
+        for (int i = 0; i < 10; i++) {
+            humanos.getUnidades(2).atacar(orcs.getUnidades(4));
+        }
+        orcs.getUnidades(5).mover("Norte");
+        orcs.getUnidades(5).mover("Norte");
+        orcs.getUnidades(5).mover("Oeste");
+        orcs.getUnidades(5).mover("Oeste");
+        for (int i = 0; i < 4; i++) {
+            humanos.getUnidades(2).atacar(orcs.getUnidades(5));
+        }
+        for (int i = 0; i < 47; i++) {
+            humanos.getUnidades(2).atacar(orcs.getConstrucoes(0));
+        }
+        for (int i = 0; i < 27; i++) {
+            humanos.getUnidades(2).atacar(orcs.getConstrucoes(1));
+        }
+        for (int i = 0; i < 27; i++) {
+            humanos.getUnidades(2).atacar(orcs.getConstrucoes(2));
+        }
     }
 }
