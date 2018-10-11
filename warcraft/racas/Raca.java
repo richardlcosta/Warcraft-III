@@ -2,8 +2,8 @@ package warcraft.racas;
 
 import warcraft.objetos.construcoes.*;
 import warcraft.objetos.unidades.*;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Raca {
     private int comida;
@@ -13,47 +13,39 @@ public abstract class Raca {
     private boolean extinta = false;
     private int capacidadeMax;
 
-    //Arrays de Construção
-    private ArrayList<Casa> casas = new ArrayList<>();
-    private ArrayList<CentroDaCidade> centros = new ArrayList<>();
-    private ArrayList<Quartel> quarteis = new ArrayList<>();
-    private ArrayList<Templo> templos = new ArrayList<>();
-    private ArrayList<Torre> torres = new ArrayList<>();
-
-    //Arrays de Unidades
-    private ArrayList<AndarilhoEspiritual> andarilhos = new ArrayList<>();
-    private ArrayList<Arqueiro> arqueiros = new ArrayList<>();
-    private ArrayList<Campones> camponeses = new ArrayList<>();
-    private ArrayList<Cavaleiro> cavaleiros = new ArrayList<>();
-    private ArrayList<Grifo> grifos = new ArrayList<>();
-    private ArrayList<Guerreiro> guerreiros = new ArrayList<>();
-    private ArrayList<Sacerdote> sacerdotes = new ArrayList<>();
-
-    public CentroDaCidade getCentro(int numero) {
-        return centros.get(numero - 1);
-    }
-    public void addCentro(CentroDaCidade centro) {
-        this.centros.add(centro);
-    }
-
-    public Campones getCampones(int numero) {
-        return camponeses.get(numero - 1);
-    }
-    public void addCampones(Campones campones) {
-        this.camponeses.add(campones);
-    }
+    private ArrayList<Unidade> unidades = new ArrayList<>();
+    private ArrayList<Construcao> construcoes = new ArrayList<>();
 
     public void setComida(int comida) {
         this.comida = comida;
     }
+
     public void setOuro(int ouro) {
         this.ouro = ouro;
     }
+
     public void setMadeira(int madeira) {
         this.madeira = madeira;
     }
+
     public void setMana(int mana) {
         this.mana = mana;
+    }
+
+    public Unidade getUnidades(int index) {
+        return unidades.get(index);
+    }
+
+    public Construcao getConstrucoes(int index) {
+        return construcoes.get(index);
+    }
+
+    public void addUnidade(Unidade unidade) {
+        unidades.add(unidade);
+    }
+
+    public void addConstrucao(Construcao construcao) {
+        construcoes.add(construcao);
     }
 
     public Raca(int comida, int ouro, int madeira, int mana) {
@@ -61,5 +53,8 @@ public abstract class Raca {
         this.ouro = ouro;
         this.madeira = madeira;
         this.mana = mana;
+        construcoes.add(new CentroDaCidade("0 0", this));
+        unidades.add(new Campones("0 0", this));
+        unidades.add(new Campones("0 0", this));
     }
 }

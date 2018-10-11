@@ -1,32 +1,29 @@
 package warcraft;
 
 import warcraft.objetos.construcoes.*;
+import warcraft.objetos.unidades.*;
 import warcraft.racas.*;
-
-import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
+        //AO INSTANCIAR UMA RAÇA, O JOGADOR INICIARÁ POR PADRÃO COM UM CENTRO DE CIDADE E DOIS CAMPONESES
+
         //INICIALIZANDO A HUMANIDADE
         Humano humanos = new Humano();
 
-        //CRIANDO UM CENTRO DE CIDADE
-        CentroDaCidade centro = new CentroDaCidade("10 10");
-        humanos.addCentro(centro);
+        //ACESSANDO O CENTRO "DE FÁBRICA" PARA CRIAR UM TERCEIRO CAMPONES
+        ((CentroDaCidade) humanos.getConstrucoes(0)).criarCampones("10 10");
 
-        //USANDO O CENTRO DE CIDADE PARA CRIAR UM CAMPONES NA POSIÇÃO 25 23
-        humanos.addCampones(centro.criarCampones("25 23"));
+        //ACESSANDO O CAMPONES "DE FÁBRICA" NÚMERO 1, PARA CRIAR UMA CASA
+        ((Campones) humanos.getUnidades(0)).construirCasa("15 15");
 
-        //MOVENDO O CAMPONES PARA O NORTE E PARA O LEST
-        humanos.getCampones(1).mover("Norte");
-        humanos.getCampones(1).mover("Leste");
+        //ACESSANDO O CAMPONES NÚMERO 3, PARA CRIAR UM TEMPLO
+        ((Campones) humanos.getUnidades(2)).construirTemplo("20 20");
 
-        //CONFERINDO O MOVIMENTO
-        humanos.getCampones(1).getPosicao().mostrarPosicao();
+        //ACESSANDO O TEMPLO PARA TENTAR CRIAR UM ANDARILHO E CONFERINDO MENSAGEM DE ERRO
+        ((Templo) humanos.getConstrucoes(2)).criarAndarilho("5 5");
 
-        //CONSTRUINDO OUTRO CENTRO A PARTIR DE UM CAMPONES
-        humanos.addCentro(humanos.getCampones(1).construirCentro("25 27"));
 
     }
 }
