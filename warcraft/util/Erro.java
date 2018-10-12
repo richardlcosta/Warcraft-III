@@ -54,6 +54,8 @@ public abstract class Erro {
             case "IS_FRIEND":
                 System.out.println("O QUE??? Não se deve atacar um companheiro!!!");
                 break;
+            case "FLY_UNIT":
+                System.out.println("Apenas unidades de longo alcance podem atacar unidades aéreas");
         }
     }
 }

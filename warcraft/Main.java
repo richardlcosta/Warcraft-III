@@ -159,20 +159,49 @@ public class Main {
         System.out.println("Total de unidades humanas: " + humanos.totalUnidades());
         System.out.println("Total de unidades orcs: " + orcs.totalUnidades());
 
-        //TESTANDO EXTINÇÃO DE UMA RAÇA, USAREI VÁRIOS FOR PARA FACILITAR A ELIMINAÇÃO
+        //CRIANDO UM GRIFO E TESTANDO SE RECEBE ATAQUE DE UNIDADES DE CURTO ALCANCE
+        for (int i = 0; i < 1000; i++) {
+            ((Campones) humanos.getUnidades(0)).colher();
+            ((Campones) humanos.getUnidades(0)).cortar();
+            ((Campones) humanos.getUnidades(0)).minerar();
+        }
+        ((Campones) humanos.getUnidades(0)).construirCentro("0 0");
+        ((Quartel) humanos.getConstrucoes(3)).criarGrifo("0 0");
+        orcs.getUnidades(0).atacar(humanos.getUnidades(12));
+
+        //TESTANDO O ATAQUE EM ÁREA DO GRIFO
+        System.out.println(orcs.getUnidades(0).getVida()); //CAMPONES - POSIÇÃO ATUAL 0 0 - VIDA 50
+        orcs.getUnidades(0).mover("Sul");
+        orcs.getUnidades(0).mover("Sul"); //POSIÇÃO ATUAL 0 -4 NÃO SERÁ AFETADO PELO DANO EM ÁREA
+
+        System.out.println(orcs.getUnidades(1).getVida()); //CAMPONES 2 - POSIÇÃO ATUAL 0 0 - VIDA 50
+        orcs.getUnidades(1).mover("Sul"); //POSIÇÃO ATUAL 0 -2 DEVERÁ SER AFETADO PELO DANO EM ÁREA
+
+        humanos.getUnidades(12).atacar(orcs.getUnidades(2)); //GRIFO POSIÇÃO 0 0 ATACA UM CAVALEIRO ORC TAMBÉM POSIÇÃO 0 0
+
+        //VERIFICANDO A VIDA DO PRIMEIRO CAMPONES
+        System.out.println(orcs.getUnidades(0).getVida());//NÃO FOI AFETADO
+
+        //VERIFICANDO A VIDA DO SEGUNDO CAMPONES
+        System.out.println(orcs.getUnidades(1).getVida());//FOI AFETADO
+
+        //TESTANDO SE O ATAQUE EM ÁREA DO GRIFO "REALMENTE MATA UNIDADES"
+        humanos.getUnidades(12).atacar(orcs.getUnidades(2));
+        humanos.getUnidades(12).atacar(orcs.getUnidades(2));
+
+        //TENTANDO USAR A UNIDADE QUE FOI MORTA PELO ATAQUE EM ÁREA
+        orcs.getUnidades(1).mover("Norte");
+
+        //TESTANDO EXTINÇÃO DE UMA RAÇA, USAREI VÁRIOS LAÇOS FOR PARA FACILITAR A ELIMINAÇÃO
+        orcs.getUnidades(0).mover("Norte");
+        orcs.getUnidades(0).mover("Norte");
         for (int i = 0; i < 4; i++) {
             humanos.getUnidades(2).atacar(orcs.getUnidades(0));
         }
-        for (int i = 0; i < 4; i++) {
-            humanos.getUnidades(2).atacar(orcs.getUnidades(1));
-        }
-        for (int i = 0; i < 18; i++) {
+        for (int i = 0; i < 13; i++) {
             humanos.getUnidades(2).atacar(orcs.getUnidades(2));
         }
-        for (int i = 0; i < 4; i++) {
-            humanos.getUnidades(2).atacar(orcs.getUnidades(3));
-        }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             humanos.getUnidades(2).atacar(orcs.getUnidades(4));
         }
         orcs.getUnidades(5).mover("Norte");
@@ -182,13 +211,13 @@ public class Main {
         for (int i = 0; i < 4; i++) {
             humanos.getUnidades(2).atacar(orcs.getUnidades(5));
         }
-        for (int i = 0; i < 47; i++) {
+        for (int i = 0; i < 42; i++) {
             humanos.getUnidades(2).atacar(orcs.getConstrucoes(0));
         }
-        for (int i = 0; i < 27; i++) {
+        for (int i = 0; i < 23; i++) {
             humanos.getUnidades(2).atacar(orcs.getConstrucoes(1));
         }
-        for (int i = 0; i < 27; i++) {
+        for (int i = 0; i < 23; i++) {
             humanos.getUnidades(2).atacar(orcs.getConstrucoes(2));
         }
     }

@@ -17,6 +17,14 @@ public abstract class Raca {
     private ArrayList<Unidade> unidades = new ArrayList<>();
     private ArrayList<Construcao> construcoes = new ArrayList<>();
 
+    public ArrayList<Unidade> listaDeUnidades() {
+        return unidades;
+    }
+
+    public ArrayList<Construcao> listaDeConstrucoes() {
+        return construcoes;
+    }
+
     public Unidade getUnidades(int index) {
         return unidades.get(index);
     }
