@@ -786,8 +786,8 @@ public class Main {
         }else{
             Campones campones = selecionarCampones(raca);
             System.out.println("Selecione uma opção");
-            System.out.print("[1] Atacar [2] Colher [3] Cortar [4] Minerar [5] Construir [6] Sair ");
-            switch (selecionarOpcao("([1-6])")){
+            System.out.print("[1] Atacar [2] Colher [3] Cortar [4] Minerar [5] Construir [6] Mover [7] Sair ");
+            switch (selecionarOpcao("([1-7])")){
                 case "1": if (verificaAlvo(campones, raca)) {campones.atacar(selecionarAlvo(campones, raca)); deduzirPontosAcao(raca);} else {System.out.println("Nenhum alvo ao seu alcance");} break;
                 case "2": campones.colher(); deduzirPontosAcao(raca); break;
                 case "3": campones.cortar(); deduzirPontosAcao(raca); break;
@@ -795,7 +795,7 @@ public class Main {
                 case "5":
                         System.out.println("Selecione uma opção");
                         System.out.print("[1] Casa [2] Centro [3] Quartel [4] Templo [5] Torre [6] Sair: ");
-                        switch (selecionarOpcao("[123456]")){
+                        switch (selecionarOpcao("[1-6]")){
                             case "1": campones.construirCasa(); deduzirPontosAcao(raca); break;
                             case "2": campones.construirCentro(); deduzirPontosAcao(raca); break;
                             case "3": campones.construirQuartel(); deduzirPontosAcao(raca); break;

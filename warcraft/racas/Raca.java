@@ -101,7 +101,8 @@ public abstract class Raca {
                 }
             }
         }
-        return unidades.size() < capacidadeMax;
+        calculaNumeroUnidades();
+        return numeroUnidades < capacidadeMax;
     }
 
     /**
