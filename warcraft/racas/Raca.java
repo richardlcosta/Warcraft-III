@@ -14,6 +14,7 @@ public abstract class Raca {
     private int capacidadeMax;
     private int numeroUnidades;
     private int numeroConstrucoes;
+    private Posicao posicaoInicial;
     private ArrayList<Unidade> unidades = new ArrayList<>();
     private ArrayList<Construcao> construcoes = new ArrayList<>();
 
@@ -45,16 +46,22 @@ public abstract class Raca {
         return recursos;
     }
 
-    public void addComida() {
-        this.recursos.addRecursos(1, 0, 0, 0);
+    public int addComida() {
+        int quant = (int) (Math.random() * (50 - 20)) + 20;
+        this.recursos.addRecursos(quant, 0, 0, 0);
+        return quant;
     }
 
-    public void addOuro() {
-        this.recursos.addRecursos(0, 1, 0, 0);
+    public int addOuro() {
+        int quant = (int) (Math.random() * (50 - 20)) + 20;
+        this.recursos.addRecursos(0, quant, 0, 0);
+        return quant;
     }
 
-    public void addMadeira() {
-        this.recursos.addRecursos(0, 0, 1, 0);
+    public int addMadeira() {
+        int quant = (int) (Math.random() * (50 - 20)) + 20;
+        this.recursos.addRecursos(0, 0, quant, 0);
+        return quant;
     }
 
     public void addMana(int quant) {
@@ -156,10 +163,11 @@ public abstract class Raca {
         raca.unidades.add(unidade);
     }
 
-    public Raca(Recurso recursos) {
+    public Raca(Recurso recursos, String posicao) {
         this.recursos = recursos;
-        construcoes.add(new CentroDaCidade("0 0", this));
-        unidades.add(new Campones("0 0", this));
-        unidades.add(new Campones("0 0", this));
+        this.posicaoInicial = new Posicao(posicao);
+        construcoes.add(new CentroDaCidade(posicaoInicial, this));
+        unidades.add(new Campones(posicaoInicial, this));
+        unidades.add(new Campones(posicaoInicial, this));
     }
 }

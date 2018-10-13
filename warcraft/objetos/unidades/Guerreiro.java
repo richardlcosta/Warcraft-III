@@ -9,7 +9,7 @@ import warcraft.util.*;
 
 public class Guerreiro extends Unidade {
 
-    public Guerreiro(String posicao, Raca raca) {
-        super(new Posicao(posicao), "guerreiro.jpg", new Custo(35, 15, 0, 0), true, 160, 13, 1.8, 1, 2, raca);
+    public Guerreiro(Posicao posicao, Raca raca) {
+        super(posicao, "guerreiro.jpg", new Custo(35, 15, 0, 0), true, 160, 13, 1.8, 1, 2, raca);
     }
 }

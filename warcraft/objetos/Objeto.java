@@ -88,7 +88,7 @@ public abstract class Objeto {
                         int armadura = objeto instanceof Unidade ? ((Unidade) objeto).getArmadura() : 0;
                         int dano = this.ataque - armadura > 0 ? this.ataque - armadura : 0;
                         objeto.vida -= dano;
-                        System.out.printf("Ataque efetuado, infligiu %d de dano. ", dano);
+                        System.out.printf("Ataque efetuado, infligiu %d de dano.\n", dano);
                         objeto.atualizaEstado();
                         if (this instanceof Grifo){ //CASO O ATAQUE VENHA DE UM GRIFO, A LISTA DE UNIDADES E CONSTRUÇÕES É VARRIDA NA BUSCA DE OBJETOS NUM RAIO DE TRÊS METROS
                             for(Unidade unidade : objeto.raca.listaDeUnidades()){
@@ -97,7 +97,9 @@ public abstract class Objeto {
                                     dano = this.ataque - armadura;
                                     unidade.setVida(unidade.getVida() - dano);
                                     unidade.atualizaEstado();
-                                    if (!unidade.getEstado()){
+                                    if (unidade.getEstado()){
+                                        System.out.println("Uma unidade foi atingida pelo ataque em área do grifo");
+                                    }else{
                                         System.out.println("Uma unidade foi abatida pelo ataque em área do grifo");
                                     }
                                 }
@@ -112,7 +114,6 @@ public abstract class Objeto {
                                     }
                                 }
                             }
-                            System.out.println("Unidades e construções em um raio de três metros foram atingidas");
                         }
                         if (objeto instanceof Unidade) { //VERIFICA SE É UMA UNIDADE OU UMA CONSTRUÇÃO
                             if (!objeto.estado) { //VERIFICA SE FOI ABATIDA OU SE PERMANECE VIVO
@@ -145,7 +146,7 @@ public abstract class Objeto {
      * @param objeto {Objeto}
      * @return boolean
      */
-    protected boolean verificaDistancia(Objeto objeto) {
+    public boolean verificaDistancia(Objeto objeto) {
         distanciaAtual = posicao.calculaDistancia(posicao, objeto.posicao);
         return alcance >= distanciaAtual;
     }

@@ -40,10 +40,12 @@ public class Sacerdote extends Unidade {
      */
 
     public void rezar() {
-        this.raca.addMana(5);
+        int quant = (int) (Math.random() * (10 - 5)) + 5;
+        this.raca.addMana(quant);
+        System.out.printf("O sacerdote restaurou %d pontos de mana\n", quant);
     }
 
-    public Sacerdote(String posicao, Raca raca) {
-        super(new Posicao(posicao), "sacerdote.jpg", new Custo(0, 125, 0, 0), true, 25, 0, 1.0, 10, 2, raca);
+    public Sacerdote(Posicao posicao, Raca raca) {
+        super(posicao, "sacerdote.jpg", new Custo(0, 125, 0, 0), true, 25, 0, 1.0, 10, 2, raca);
     }
 }

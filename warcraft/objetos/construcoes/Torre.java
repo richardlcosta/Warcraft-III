@@ -9,7 +9,7 @@ import warcraft.util.*;
 
 public class Torre extends Construcao {
 
-    public Torre(String posicao, Raca raca) {
-        super(new Posicao(posicao), "torre.jpg", new Custo(0, 0, 70, 0), true, 200, 20, 7, raca);
+    public Torre(Posicao posicao, Raca raca) {
+        super(posicao, "torre.jpg", new Custo(0, 0, 70, 0), true, 200, 20, 7, raca);
     }
 }

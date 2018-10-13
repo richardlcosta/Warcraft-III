@@ -12,15 +12,15 @@ public class CentroDaCidade extends Construcao {
 
     /**
      * Adiciona um camponês na lista de sua respectiva raça
-     * @param posicao {String}
      */
 
-    public void criarCampones(String posicao) {
+    public void criarCampones() {
         if (getEstado()) {
             Campones campones = new Campones(posicao, raca);
             if (raca.getRecursos().compararRecursos(campones.getRecurso())) {
                 if (raca.calculaPopulacaoMaxima()) {
                     raca.addUnidade(new Campones(posicao, raca));
+                    System.out.println("Campones criado com sucesso");
                 } else {
                     Erro.imprimeMensagemErro("POPULACAO_FULL");
                 }
@@ -33,7 +33,7 @@ public class CentroDaCidade extends Construcao {
         }
     }
 
-    public CentroDaCidade(String posicao, Raca raca) {
-        super(new Posicao(posicao), "centro.jpg", new Custo(0, 0, 200, 0), true, 600, 10, 8, raca);
+    public CentroDaCidade(Posicao posicao, Raca raca) {
+        super(posicao, "centro.jpg", new Custo(0, 0, 200, 0), true, 600, 10, 8, raca);
     }
 }

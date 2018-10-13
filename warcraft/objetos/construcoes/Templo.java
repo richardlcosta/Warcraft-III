@@ -12,15 +12,15 @@ public class Templo extends Construcao {
 
     /**
      * Adiciona um sacerdote na lista de sua respectiva raça
-     * @param posicao {String}
      */
 
-    public void criarSacerdote(String posicao) {
+    public void criarSacerdote() {
         if (getEstado()) {
             Sacerdote sacerdote = new Sacerdote(posicao, raca);
             if (raca.getRecursos().compararRecursos(sacerdote.getRecurso())) {
                 if (raca.calculaPopulacaoMaxima()) {
                     raca.addUnidade(new Sacerdote(posicao, raca));
+                    System.out.println("Sacerdote criado com sucesso");
                 } else {
                     Erro.imprimeMensagemErro("POPULACAO_FULL");
                 }
@@ -35,10 +35,9 @@ public class Templo extends Construcao {
 
     /**
      * Adiciona um andarilho na lista de sua respectiva raça
-     * @param posicao {String}
      */
 
-    public void criarAndarilho(String posicao) {
+    public void criarAndarilho() {
         if (getEstado()) {
             AndarilhoEspiritual andarilhoEspiritual = new AndarilhoEspiritual(posicao, raca);
             if (raca.getRecursos().compararRecursos(andarilhoEspiritual.getRecurso())) {
@@ -47,6 +46,7 @@ public class Templo extends Construcao {
                         Erro.imprimeMensagemErro("ORCS_ONLY");
                     } else {
                         raca.addUnidade(new AndarilhoEspiritual(posicao, raca));
+                        System.out.println("Andarilho criado com sucesso");
                     }
                 } else {
                     Erro.imprimeMensagemErro("POPULACAO_FULL");
@@ -60,7 +60,7 @@ public class Templo extends Construcao {
         }
     }
 
-    public Templo(String posicao, Raca raca) {
-        super(new Posicao(posicao), "templo.jpg", new Custo(0, 0, 250, 0), true, 350, 0, 0, raca);
+    public Templo(Posicao posicao, Raca raca) {
+        super(posicao, "templo.jpg", new Custo(0, 0, 250, 0), true, 350, 0, 0, raca);
     }
 }

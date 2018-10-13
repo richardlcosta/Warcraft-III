@@ -8,7 +8,7 @@ import warcraft.util.Recurso;
 
 public class Orc extends Raca {
 
-    public Orc(int comida, int ouro,int madeira, int mana) {
-        super(new Recurso(comida, ouro, madeira, mana));
+    public Orc(int comida, int ouro,int madeira, int mana, String posicao) {
+        super(new Recurso(comida, ouro, madeira, mana), posicao);
     }
 }
