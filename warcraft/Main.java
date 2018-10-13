@@ -597,10 +597,11 @@ public class Main {
         }else{
             CentroDaCidade centro = selecionarCentro(raca);
             System.out.println("Selecione uma opção");
-            System.out.print("[1] Criar Campones [2] Atacar [3] Sair: ");
-            switch (selecionarOpcao("[123]")){
+            System.out.print("[1] Criar Campones [2] Atacar [3] Ver posição [4] Sair: ");
+            switch (selecionarOpcao("[1-4]")){
                 case "1": centro.criarCampones(); deduzirPontosAcao(raca); break;
                 case "2": if (verificaAlvo(centro, raca)) {centro.atacar(selecionarAlvo(centro, raca)); deduzirPontosAcao(raca);} else {System.out.println("Nenhum alvo ao seu alcance");} break;
+                case "3": centro.getPosicao().mostrarPosicao(); break;
             }
         }
     }
@@ -640,19 +641,21 @@ public class Main {
             Quartel quartel = selecionarQuartel(raca);
             System.out.println("Selecione uma opção");
             if(raca instanceof Humano) {
-                System.out.print("[1] Criar Guerreiro [2] Criar Cavaleiro [3] Criar Arqueiro [4] Criar Grifo [5] Sair: ");
-                switch (selecionarOpcao("[12345]")){
+                System.out.print("[1] Criar Guerreiro [2] Criar Cavaleiro [3] Criar Arqueiro [4] Criar Grifo [5] Ver posição [6] Sair: ");
+                switch (selecionarOpcao("[1-6]")){
                     case "1": quartel.criarGuerreiro(); deduzirPontosAcao(raca); break;
                     case "2": quartel.criarCavaleiro(); deduzirPontosAcao(raca); break;
                     case "3": quartel.criarArqueiro(); deduzirPontosAcao(raca); break;
                     case "4": quartel.criarGrifo(); deduzirPontosAcao(raca); break;
+                    case "5": quartel.getPosicao().mostrarPosicao(); break;
                 }
             }else{
-                System.out.print("[1] Criar Guerreiro [2] Criar Cavaleiro [3] Criar Arqueiro [4] Sair: ");
-                switch (selecionarOpcao("[1234]")){
+                System.out.print("[1] Criar Guerreiro [2] Criar Cavaleiro [3] Criar Arqueiro [4] Ver posição [5] Sair: ");
+                switch (selecionarOpcao("[1-5]")){
                     case "1": quartel.criarGuerreiro(); deduzirPontosAcao(raca); break;
                     case "2": quartel.criarCavaleiro(); deduzirPontosAcao(raca); break;
                     case "3": quartel.criarArqueiro(); deduzirPontosAcao(raca); break;
+                    case "4": quartel.getPosicao().mostrarPosicao(); break;
                 }
             }
         }
@@ -693,15 +696,17 @@ public class Main {
             Templo templo = selecionarTemplo(raca);
             System.out.println("Selecione uma opção");
             if (raca instanceof Orc){
-                System.out.print("[1] Criar Sacerdote [2] Criar Andarilho [3] Sair: ");
-                switch (selecionarOpcao("[123]")){
+                System.out.print("[1] Criar Sacerdote [2] Criar Andarilho [3] Ver posição [4] Sair: ");
+                switch (selecionarOpcao("[1-4]")){
                     case "1": templo.criarSacerdote(); deduzirPontosAcao(raca); break;
                     case "2": templo.criarAndarilho(); deduzirPontosAcao(raca); break;
+                    case "3": templo.getPosicao().mostrarPosicao(); break;
                 }
             }else{
-                System.out.print("[1] Criar Sacerdote [2] Sair: ");
-                switch (selecionarOpcao("[12]")){
+                System.out.print("[1] Criar Sacerdote [2] Ver posição [3] Sair: ");
+                switch (selecionarOpcao("[1-3]")){
                     case "1": templo.criarSacerdote(); deduzirPontosAcao(raca); break;
+                    case "2": templo.getPosicao().mostrarPosicao(); break;
                 }
             }
         }
@@ -741,9 +746,10 @@ public class Main {
         } else {
             Torre torre = selecionarTorre(raca);
             System.out.println("Selecione uma opção");
-            System.out.print("[1] Atacar [2] Sair: ");
-            switch (selecionarOpcao("[12]")) {
+            System.out.print("[1] Atacar [2] Ver posição [3] Sair: ");
+            switch (selecionarOpcao("[1-3]")) {
                 case "1": if (verificaAlvo(torre, raca)) {torre.atacar(selecionarAlvo(torre, raca)); deduzirPontosAcao(raca);} else {System.out.println("Nenhum alvo ao seu alcance");} break;
+                case "2": torre.getPosicao().mostrarPosicao(); break;
             }
         }
     }
@@ -786,8 +792,8 @@ public class Main {
         }else{
             Campones campones = selecionarCampones(raca);
             System.out.println("Selecione uma opção");
-            System.out.print("[1] Atacar [2] Colher [3] Cortar [4] Minerar [5] Construir [6] Mover [7] Sair ");
-            switch (selecionarOpcao("([1-7])")){
+            System.out.print("[1] Atacar [2] Colher [3] Cortar [4] Minerar [5] Construir [6] Mover [7] Ver posição [8] Sair ");
+            switch (selecionarOpcao("([1-8])")){
                 case "1": if (verificaAlvo(campones, raca)) {campones.atacar(selecionarAlvo(campones, raca)); deduzirPontosAcao(raca);} else {System.out.println("Nenhum alvo ao seu alcance");} break;
                 case "2": campones.colher(); deduzirPontosAcao(raca); break;
                 case "3": campones.cortar(); deduzirPontosAcao(raca); break;
@@ -804,6 +810,7 @@ public class Main {
                         }
                         break;
                 case "6": campones.mover(selecionarDirecao()); deduzirPontosAcao(raca); break;
+                case "7": campones.getPosicao().mostrarPosicao(); break;
             }
         }
     }
@@ -842,8 +849,8 @@ public class Main {
         }else{
             AndarilhoEspiritual andarilho = selecionarAndarilho(raca);
             System.out.println("Selecione uma opção");
-            System.out.print("[1] Atacar [2] Reviver [3] Mover [4] Sair: ");
-            switch (selecionarOpcao("[1234]")){
+            System.out.print("[1] Atacar [2] Reviver [3] Mover [4] Ver posição [5] Sair: ");
+            switch (selecionarOpcao("[1-5]")){
                 case "1": if (verificaAlvo(andarilho, raca)) {andarilho.atacar(selecionarAlvo(andarilho, raca)); deduzirPontosAcao(raca);} else {System.out.println("Nenhum alvo ao seu alcance");} break;
                 case "2":
                     if (verificaAlvoMorto(andarilho, raca) && verificaAliadoMorto(andarilho, raca)){
@@ -861,6 +868,7 @@ public class Main {
                     }
                     break;
                 case "3": andarilho.mover(selecionarDirecao()); deduzirPontosAcao(raca); break;
+                case "4": andarilho.getPosicao().mostrarPosicao(); break;
             }
         }
     }
@@ -899,10 +907,11 @@ public class Main {
         }else{
             Arqueiro arqueiro = selecionarArqueiro(raca);
             System.out.println("Selecione uma opção");
-            System.out.print("[1] Atacar [2] Mover [3] Sair: ");
-            switch (selecionarOpcao("[123]")){
+            System.out.print("[1] Atacar [2] Mover [3] Ver posição [4] Sair: ");
+            switch (selecionarOpcao("[1-4]")){
                 case "1": if (verificaAlvo(arqueiro, raca)) {arqueiro.atacar(selecionarAlvo(arqueiro, raca)); deduzirPontosAcao(raca);} else {System.out.println("Nenhum alvo ao seu alcance");} break;
                 case "2": arqueiro.mover(selecionarDirecao()); deduzirPontosAcao(raca); break;
+                case "3": arqueiro.getPosicao().mostrarPosicao(); break;
             }
         }
     }
@@ -941,10 +950,11 @@ public class Main {
         }else{
             Guerreiro guerreiro = selecionarGuerreiro(raca);
             System.out.println("Selecione uma opção");
-            System.out.print("[1] Atacar [2] Mover [3] Sair: ");
-            switch (selecionarOpcao("[123]")){
+            System.out.print("[1] Atacar [2] Mover [3] Ver posição [4] Sair: ");
+            switch (selecionarOpcao("[1-4]")){
                 case "1": if (verificaAlvo(guerreiro, raca)) {guerreiro.atacar(selecionarAlvo(guerreiro, raca)); deduzirPontosAcao(raca);} else {System.out.println("Nenhum alvo ao seu alcance");} break;
                 case "2": guerreiro.mover(selecionarDirecao()); deduzirPontosAcao(raca); break;
+                case "3": guerreiro.getPosicao().mostrarPosicao(); break;
             }
         }
     }
@@ -983,10 +993,11 @@ public class Main {
         }else{
             Cavaleiro cavaleiro = selecionarCavaleiro(raca);
             System.out.println("Selecione uma opção");
-            System.out.print("[1] Atacar [2] Mover [3] Sair: ");
-            switch (selecionarOpcao("[123]")){
+            System.out.print("[1] Atacar [2] Mover [3] Ver posição [4] Sair: ");
+            switch (selecionarOpcao("[1-4]")){
                 case "1": if (verificaAlvo(cavaleiro, raca)) {cavaleiro.atacar(selecionarAlvo(cavaleiro, raca)); deduzirPontosAcao(raca);} else {System.out.println("Nenhum alvo ao seu alcance");} break;
                 case "2": cavaleiro.mover(selecionarDirecao()); deduzirPontosAcao(raca); break;
+                case "3": cavaleiro.getPosicao().mostrarPosicao(); break;
             }
         }
     }
@@ -1025,11 +1036,12 @@ public class Main {
         }else{
             Sacerdote sacerdote = selecionarSacerdote(raca);
             System.out.println("Selecione uma opção");
-            System.out.print("[1] Curar [2] Rezar [3] Mover [4] Sair: ");
-            switch (selecionarOpcao("[1234]")){
+            System.out.print("[1] Curar [2] Rezar [3] Mover [4] Ver posição [5] Sair: ");
+            switch (selecionarOpcao("[1-5]")){
                 case "1": if (verificaAliado(sacerdote, raca)) {sacerdote.curar(selecionarAliado(sacerdote, raca)); deduzirPontosAcao(raca);} else {System.out.println("Nenhum aliado ao seu alcance");} break;
                 case "2": sacerdote.rezar(); deduzirPontosAcao(raca); break;
                 case "3": sacerdote.mover(selecionarDirecao()); deduzirPontosAcao(raca); break;
+                case "4": sacerdote.getPosicao().mostrarPosicao(); break;
             }
         }
     }
@@ -1068,10 +1080,11 @@ public class Main {
         }else{
             Grifo grifo = selecionarGrifo(raca);
             System.out.println("Selecione uma opção");
-            System.out.print("[1] Atacar [2] Mover [3] Sair: ");
-            switch (selecionarOpcao("[123]")){
+            System.out.print("[1] Atacar [2] Mover [3] Ver posição [4] Sair: ");
+            switch (selecionarOpcao("[1-4]")){
                 case "1": if (verificaAlvo(grifo, raca)) {grifo.atacar(selecionarAlvo(grifo, raca)); deduzirPontosAcao(raca);} else {System.out.println("Nenhum alvo ao seu alcance");} break;
                 case "2": grifo.mover(selecionarDirecao()); deduzirPontosAcao(raca); break;
+                case "3": grifo.getPosicao().mostrarPosicao(); break;
             }
         }
     }

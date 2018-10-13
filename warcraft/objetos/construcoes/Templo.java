@@ -19,7 +19,7 @@ public class Templo extends Construcao {
             Sacerdote sacerdote = new Sacerdote(posicao, raca);
             if (raca.getRecursos().compararRecursos(sacerdote.getRecurso())) {
                 if (raca.calculaPopulacaoMaxima()) {
-                    raca.addUnidade(new Sacerdote(posicao, raca));
+                    raca.addUnidade(new Sacerdote(new Posicao(String.format("%.0f %.0f",posicao.getX(), posicao.getY())), raca));
                     System.out.println("Sacerdote criado com sucesso");
                 } else {
                     Erro.imprimeMensagemErro("POPULACAO_FULL");
@@ -45,7 +45,7 @@ public class Templo extends Construcao {
                     if (raca instanceof Humano) {
                         Erro.imprimeMensagemErro("ORCS_ONLY");
                     } else {
-                        raca.addUnidade(new AndarilhoEspiritual(posicao, raca));
+                        raca.addUnidade(new AndarilhoEspiritual(new Posicao(String.format("%.0f %.0f",posicao.getX(), posicao.getY())), raca));
                         System.out.println("Andarilho criado com sucesso");
                     }
                 } else {

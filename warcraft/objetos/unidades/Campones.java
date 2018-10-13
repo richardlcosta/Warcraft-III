@@ -16,7 +16,7 @@ public class Campones extends Unidade {
 
     public void construirCasa() {
         if (getEstado()) {
-            Casa casa = new Casa(posicao, raca);
+            Casa casa = new Casa(new Posicao(String.format("%.0f %.0f",posicao.getX(), posicao.getY())), raca);
             if (raca.getRecursos().compararRecursos(casa.getRecurso())) {
                 raca.addConstrucao(casa);
                 System.out.println("Casa construída com sucesso");
@@ -35,7 +35,7 @@ public class Campones extends Unidade {
 
     public void construirCentro() {
         if (getEstado()) {
-            CentroDaCidade centro = new CentroDaCidade(posicao, raca);
+            CentroDaCidade centro = new CentroDaCidade(new Posicao(String.format("%.0f %.0f",posicao.getX(), posicao.getY())), raca);
             if (raca.getRecursos().compararRecursos(centro.getRecurso())) {
                 raca.addConstrucao(centro);
                 System.out.println("Centro construído com sucesso");
@@ -54,7 +54,7 @@ public class Campones extends Unidade {
 
     public void construirTemplo() {
         if (getEstado()) {
-            Templo templo = new Templo(posicao, raca);
+            Templo templo = new Templo(new Posicao(String.format("%.0f %.0f",posicao.getX(), posicao.getY())), raca);
             if (raca.getRecursos().compararRecursos(templo.getRecurso())) {
                 raca.addConstrucao(templo);
                 System.out.println("Templo construído com sucesso");
@@ -73,7 +73,7 @@ public class Campones extends Unidade {
 
     public void construirQuartel() {
         if (getEstado()) {
-            Quartel quartel = new Quartel(posicao, raca);
+            Quartel quartel = new Quartel(new Posicao(String.format("%.0f %.0f",posicao.getX(), posicao.getY())), raca);
             if (raca.getRecursos().compararRecursos(quartel.getRecurso())) {
                 raca.addConstrucao(quartel);
                 System.out.println("Quartel construído com sucesso");
@@ -92,7 +92,7 @@ public class Campones extends Unidade {
 
     public void construirTorre() {
         if (getEstado()) {
-            Torre torre = new Torre(posicao, raca);
+            Torre torre = new Torre(new Posicao(String.format("%.0f %.0f",posicao.getX(), posicao.getY())), raca);
             if (raca.getRecursos().compararRecursos(torre.getRecurso())) {
                 raca.addConstrucao(torre);
                 System.out.println("Torre construída com sucesso");

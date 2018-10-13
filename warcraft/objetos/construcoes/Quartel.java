@@ -19,7 +19,7 @@ public class Quartel extends Construcao {
             Guerreiro guerreiro = new Guerreiro(posicao, raca);
             if (raca.getRecursos().compararRecursos(guerreiro.getRecurso())) {
                 if (raca.calculaPopulacaoMaxima()) {
-                    raca.addUnidade(new Guerreiro(posicao, raca));
+                    raca.addUnidade(new Guerreiro(new Posicao(String.format("%.0f %.0f",posicao.getX(), posicao.getY())), raca));
                     System.out.println("Guerreiro criado com sucesso");
                 } else {
                     Erro.imprimeMensagemErro("POPULACAO_FULL");
@@ -42,7 +42,7 @@ public class Quartel extends Construcao {
             Cavaleiro cavaleiro = new Cavaleiro(posicao, raca);
             if (raca.getRecursos().compararRecursos(cavaleiro.getRecurso())) {
                 if (raca.calculaPopulacaoMaxima()) {
-                    raca.addUnidade(new Cavaleiro(posicao, raca));
+                    raca.addUnidade(new Cavaleiro(new Posicao(String.format("%.0f %.0f",posicao.getX(), posicao.getY())), raca));
                     System.out.println("Cavaleiro criado com sucesso");
                 } else {
                     Erro.imprimeMensagemErro("POPULACAO_FULL");
@@ -65,7 +65,7 @@ public class Quartel extends Construcao {
             Arqueiro arqueiro = new Arqueiro(posicao, raca);
             if (raca.getRecursos().compararRecursos(arqueiro.getRecurso())) {
                 if (raca.calculaPopulacaoMaxima()) {
-                    raca.addUnidade(new Arqueiro(posicao, raca));
+                    raca.addUnidade(new Arqueiro(new Posicao(String.format("%.0f %.0f",posicao.getX(), posicao.getY())), raca));
                     System.out.println("Arqueiro criado com sucesso");
                 } else {
                     Erro.imprimeMensagemErro("POPULACAO_FULL");
@@ -91,7 +91,7 @@ public class Quartel extends Construcao {
                     if (raca instanceof Orc) {
                         Erro.imprimeMensagemErro("HUMANOS_ONLY");
                     } else {
-                        raca.addUnidade(new Grifo(posicao, raca));
+                        raca.addUnidade(new Grifo(new Posicao(String.format("%.0f %.0f",posicao.getX(), posicao.getY())), raca));
                         System.out.println("Grifo criado com sucesso");
                     }
                 } else {

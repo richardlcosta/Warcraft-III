@@ -167,8 +167,8 @@ public abstract class Raca {
     public Raca(Recurso recursos, String posicao) {
         this.recursos = recursos;
         this.posicaoInicial = new Posicao(posicao);
-        construcoes.add(new CentroDaCidade(posicaoInicial, this));
-        unidades.add(new Campones(posicaoInicial, this));
-        unidades.add(new Campones(posicaoInicial, this));
+        construcoes.add(new CentroDaCidade(new Posicao(String.format("%.0f %.0f",posicaoInicial.getX(), posicaoInicial.getY())), this));
+        unidades.add(new Campones(new Posicao(String.format("%.0f %.0f",posicaoInicial.getX(), posicaoInicial.getY())), this));
+        unidades.add(new Campones(new Posicao(String.format("%.0f %.0f",posicaoInicial.getX(), posicaoInicial.getY())), this));
     }
 }

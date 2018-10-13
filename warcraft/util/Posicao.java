@@ -5,15 +5,15 @@ package warcraft.util;
  */
 
 public class Posicao {
-    private double posicaoX;
-    private double posicaoY;
+    private double X;
+    private double Y;
 
-    protected double getPosicaoX() {
-        return posicaoX;
+    public double getX() {
+        return X;
     }
 
-    protected double getPosicaoY() {
-        return posicaoY;
+    public double getY() {
+        return Y;
     }
 
     /**
@@ -22,7 +22,7 @@ public class Posicao {
      */
 
     public void moverNorte(double velocidade) {
-        posicaoY += velocidade;
+        Y += velocidade;
     }
 
     /**
@@ -31,7 +31,7 @@ public class Posicao {
      */
 
     public void moverSul(double velocidade) {
-        posicaoY -= velocidade;
+        Y -= velocidade;
     }
 
     /**
@@ -40,7 +40,7 @@ public class Posicao {
      */
 
     public void moverLeste(double velocidade) {
-        posicaoX += velocidade;
+        X += velocidade;
     }
 
     /**
@@ -49,7 +49,7 @@ public class Posicao {
      */
 
     public void moverOeste(double velocidade) {
-        posicaoX -= velocidade;
+        X -= velocidade;
     }
 
     /**
@@ -60,8 +60,8 @@ public class Posicao {
      */
 
     public double calculaDistancia(Posicao posicao1, Posicao posicao2) {
-        double distX = Math.abs(posicao1.getPosicaoX() - posicao2.getPosicaoX());
-        double distY = Math.abs(posicao1.getPosicaoY() - posicao2.getPosicaoY());
+        double distX = Math.abs(posicao1.getX() - posicao2.getX());
+        double distY = Math.abs(posicao1.getY() - posicao2.getY());
 
         return Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2));
     }
@@ -71,11 +71,11 @@ public class Posicao {
      */
 
     public void mostrarPosicao() {
-        System.out.println(posicaoX + " " + posicaoY);
+        System.out.printf("Posição atual %.2f %.2f\n", X, Y);
     }
 
     public Posicao(String posicao) {
-        this.posicaoX = Double.parseDouble(posicao.split("\\s")[0]);
-        this.posicaoY = Double.parseDouble(posicao.split("\\s")[1]);
+        this.X = Double.parseDouble(posicao.split("\\s")[0]);
+        this.Y = Double.parseDouble(posicao.split("\\s")[1]);
     }
 }

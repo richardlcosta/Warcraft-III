@@ -21,16 +21,16 @@ public class Unidade extends Objeto {
         if (getEstado()) {
             switch (direcao) {
                 case "Norte":
-                    this.posicao.moverNorte(velocidade);
+                    posicao.moverNorte(velocidade);
                     break;
                 case "Sul":
-                    this.posicao.moverSul(velocidade);
+                    posicao.moverSul(velocidade);
                     break;
                 case "Leste":
-                    this.posicao.moverLeste(velocidade);
+                    posicao.moverLeste(velocidade);
                     break;
                 case "Oeste":
-                    this.posicao.moverOeste(velocidade);
+                    posicao.moverOeste(velocidade);
                     break;
             }
             System.out.print("Nova posição: ");

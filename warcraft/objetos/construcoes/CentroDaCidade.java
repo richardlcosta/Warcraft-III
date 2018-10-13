@@ -19,7 +19,7 @@ public class CentroDaCidade extends Construcao {
             Campones campones = new Campones(posicao, raca);
             if (raca.getRecursos().compararRecursos(campones.getRecurso())) {
                 if (raca.calculaPopulacaoMaxima()) {
-                    raca.addUnidade(new Campones(posicao, raca));
+                    raca.addUnidade(new Campones(new Posicao(String.format("%.0f %.0f",posicao.getX(), posicao.getY())), raca));
                     System.out.println("Campones criado com sucesso");
                 } else {
                     Erro.imprimeMensagemErro("POPULACAO_FULL");
