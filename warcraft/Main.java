@@ -16,13 +16,10 @@ import java.util.Scanner;
 
 public class Main {
     private static Scanner scan = new Scanner(System.in);
-    private static String nomeP1;
-    private static String nomeP2;
     private static Raca racaP1;
     private static Raca racaP2;
     private static int pontosDeAcaoP1;
     private static int pontosDeAcaoP2;
-    private static boolean continuaJogo = true;
 
     /**
      * Método Principal
@@ -30,6 +27,10 @@ public class Main {
      */
 
     public static void main(String[] args) {
+        String nomeP1;
+        String nomeP2;
+        boolean continuaJogo = true;
+
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Bem vindo ao Warcraft III");
@@ -42,19 +43,23 @@ public class Main {
 
         System.out.print(nomeP1 + " com qual raça você irá jogar? [1] Humanos [2] Orcs: ");
         String opcaoP1 = selecionarOpcao("[12]");
-        System.out.print("Em qual coordenada do mapa deseja iniciar? ");
+        System.out.print("Em qual coordenada do mapa deseja iniciar? Ex: 10 10. Coordenada: ");
         String posicaoP1 = selecionarPosicao(scan.nextLine());
         racaP1 = criarRaca(opcaoP1, posicaoP1);
 
         System.out.print(nomeP2 + " com qual raça você irá jogar? [1] Humanos [2] Orcs: ");
         String opcaoP2 = selecionarOpcao("[12]");
-        System.out.print("Em qual coordenada do mapa deseja iniciar? ");
+        System.out.print("Em qual coordenada do mapa deseja iniciar? Ex: 20 20. Coordenada: ");
         String posicaoP2 = selecionarPosicao(scan.nextLine());
         racaP2 = criarRaca(opcaoP2, posicaoP2);
+
+        System.out.println("Vocês iniciarão com 1 Centro de Cidade, 2 Camponeses, 500 de comida, 500 de madeira, 500 de ouro e 50 de mana.");
+        System.out.println("Vence quem destruir todas as tropas e construções inimigas. Comecem!!!");
 
         while(continuaJogo){
             pontosDeAcaoP1 = 5;
             while(pontosDeAcaoP1 > 0){
+                System.out.println();
                 racaP1.verRecursos();
                 System.out.printf("%s Você possui %d pontos de ação restantes. O que deseja fazer? [1] Acessar construções [2] Acessar unidades: ", nomeP1, pontosDeAcaoP1);
                 switch (selecionarOpcao("[12]")){
@@ -64,6 +69,7 @@ public class Main {
             }
             pontosDeAcaoP2 = 5;
             while(pontosDeAcaoP2 > 0){
+                System.out.println();
                 racaP2.verRecursos();
                 System.out.printf("%s Você possui %d pontos de ação restantes. O que deseja fazer? [1] Acessar construções [2] Acessar unidades: ", nomeP2, pontosDeAcaoP2);
                 switch (selecionarOpcao("[12]")){
@@ -569,7 +575,7 @@ public class Main {
         int quantidadeCentros = centros.size();
         int index;
         if (quantidadeCentros > 1) {
-            System.out.printf("Você possui %d centros. Qual deles deseja acessar? ", quantidadeCentros);
+            System.out.printf("Você possui %d centros. Qual deles(as) deseja acessar? ", quantidadeCentros);
             index = Integer.parseInt(selecionarOpcao("[0-9]+"));
         }else{
             index = 1;
@@ -612,7 +618,7 @@ public class Main {
         int quantidadeQuarteis = quarteis.size();
         int index;
         if (quantidadeQuarteis > 1) {
-            System.out.printf("Você possui %d quartéis. Qual deles deseja acessar? ", quantidadeQuarteis);
+            System.out.printf("Você possui %d quartéis. Qual deles(as) deseja acessar? ", quantidadeQuarteis);
             index = Integer.parseInt(selecionarOpcao("[0-9]+"));
         }else{
             index = 1;
@@ -667,7 +673,7 @@ public class Main {
         int quantidadeTemplos = templos.size();
         int index;
         if (quantidadeTemplos > 1) {
-            System.out.printf("Você possui %d templos. Qual deles deseja acessar? ", quantidadeTemplos);
+            System.out.printf("Você possui %d templos. Qual deles(as) deseja acessar? ", quantidadeTemplos);
             index = Integer.parseInt(selecionarOpcao("[0-9]+"));
         }else{
             index = 1;
@@ -718,7 +724,7 @@ public class Main {
         int quantidadeTorres = torres.size();
         int index;
         if (quantidadeTorres > 1) {
-            System.out.printf("Você possui %d torres. Qual deles deseja acessar? ", quantidadeTorres);
+            System.out.printf("Você possui %d torres. Qual deles(as) deseja acessar? ", quantidadeTorres);
             index = Integer.parseInt(selecionarOpcao("[0-9]+"));
         }else{
             index = 1;
@@ -764,7 +770,7 @@ public class Main {
         int quantidadeCamponeses = camponeses.size();
         int index;
         if (quantidadeCamponeses > 1) {
-            System.out.printf("Você possui %d camponeses. Qual deles deseja acessar? ", quantidadeCamponeses);
+            System.out.printf("Você possui %d camponeses. Qual deles(as) deseja acessar? ", quantidadeCamponeses);
             index = Integer.parseInt(selecionarOpcao("[0-9]+"));
         }else{
             index = 1;
@@ -821,7 +827,7 @@ public class Main {
         int quantidadeAndarilhos = andarilhos.size();
         int index;
         if (quantidadeAndarilhos > 1) {
-            System.out.printf("Você possui %d andarilhos. Qual deles deseja acessar? ", quantidadeAndarilhos);
+            System.out.printf("Você possui %d andarilhos. Qual deles(as) deseja acessar? ", quantidadeAndarilhos);
             index = Integer.parseInt(selecionarOpcao("[0-9]+"));
         }else{
             index = 1;
@@ -879,7 +885,7 @@ public class Main {
         int quantidadeArqueiros = arqueiros.size();
         int index;
         if (quantidadeArqueiros > 1) {
-            System.out.printf("Você possui %d arqueiros. Qual deles deseja acessar? ", quantidadeArqueiros);
+            System.out.printf("Você possui %d arqueiros. Qual deles(as) deseja acessar? ", quantidadeArqueiros);
             index = Integer.parseInt(selecionarOpcao("[0-9]+"));
         }else{
             index = 1;
@@ -922,7 +928,7 @@ public class Main {
         int quantidadeGuerreiros = guerreiros.size();
         int index;
         if (quantidadeGuerreiros > 1) {
-            System.out.printf("Você possui %d guerreiros. Qual deles deseja acessar? ", quantidadeGuerreiros);
+            System.out.printf("Você possui %d guerreiros. Qual deles(as) deseja acessar? ", quantidadeGuerreiros);
             index = Integer.parseInt(selecionarOpcao("[0-9]+"));
         }else{
             index = 1;
@@ -965,7 +971,7 @@ public class Main {
         int quantidadeCavaleiros = cavaleiros.size();
         int index;
         if (quantidadeCavaleiros > 1) {
-            System.out.printf("Você possui %d cavaleiros. Qual deles deseja acessar? ", quantidadeCavaleiros);
+            System.out.printf("Você possui %d cavaleiros. Qual deles(as) deseja acessar? ", quantidadeCavaleiros);
             index = Integer.parseInt(selecionarOpcao("[0-9]+"));
         }else{
             index = 1;
@@ -1008,7 +1014,7 @@ public class Main {
         int quantidadeSacerdotes = sacerdotes.size();
         int index;
         if (quantidadeSacerdotes > 1) {
-            System.out.printf("Você possui %d sacerdotes. Qual deles deseja acessar? ", quantidadeSacerdotes);
+            System.out.printf("Você possui %d sacerdotes. Qual deles(as) deseja acessar? ", quantidadeSacerdotes);
             index = Integer.parseInt(selecionarOpcao("[0-9]+"));
         }else{
             index = 1;
@@ -1052,7 +1058,7 @@ public class Main {
         int quantidadeGrifos = grifos.size();
         int index;
         if (quantidadeGrifos > 1) {
-            System.out.printf("Você possui %d grifos. Qual deles deseja acessar? ", quantidadeGrifos);
+            System.out.printf("Você possui %d grifos. Qual deles(as) deseja acessar? ", quantidadeGrifos);
             index = Integer.parseInt(selecionarOpcao("[0-9]+"));
         }else{
             index = 1;
