@@ -1,4 +1,4 @@
-package warcraft;
+﻿package warcraft;
 
 import warcraft.objetos.Objeto;
 import warcraft.objetos.construcoes.*;
@@ -27,6 +27,7 @@ public class Main {
      */
 
     public static void main(String[] args) {
+	//ADICIONANDO UM COMENTÁRIO PARA TESTAR UM PULL REQUEST
         String nomeP1;
         String nomeP2;
         boolean continuaJogo = true;
