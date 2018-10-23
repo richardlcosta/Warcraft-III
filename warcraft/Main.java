@@ -27,7 +27,7 @@ public class Main {
      */
 
     public static void main(String[] args) {
-	//ADICIONANDO UM COMENTÁRIO PARA TESTAR UM PULL REQUEST
+	//TESTANDO UPSTREAM
         String nomeP1;
         String nomeP2;
         boolean continuaJogo = true;
